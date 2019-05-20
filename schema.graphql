@@ -1,0 +1,1161 @@
+﻿schema {
+  query: Query
+}
+
+#
+type Challenge {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Challenge Attributes
+  title: String
+  description: String
+  owner: String!
+  endTime: String!
+  members: [String]
+  invitedMembers: [String]
+  memberRequests: [String]
+  receivedInvites: [String]
+  capacity: String!
+  ifCompleted: String!
+  access: String!
+  restriction: String
+  events: [String]
+  group: String
+  goal: String
+  challengeType: String
+  difficulty: String
+  winner: String
+  prize: String
+  tags: [String]
+  submissions: [String]
+  streaks: [String]
+  streakUpdateSpanType: String
+  streakUpdateInterval: String
+  streakN: String
+}
+
+type ChallengeBatch {
+  items: [Challenge]
+  unretrievedItems: [Client]
+}
+
+type ChallengeConnection {
+  items: [Challenge]
+  nextToken: String
+}
+
+type Client {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # User Attributes
+  name: String!
+  gender: String
+  birthday: String
+  email: String!
+  location: String
+  username: String!
+  stripeID: String
+  federatedID: String
+  profileImagePath: String
+  profileImagePaths: [String]
+  scheduledWorkouts: [String]
+  completedWorkouts: [String]
+  scheduledTimes: [String]
+  reviewsBy: [String]
+  reviewsAbout: [String]
+  friendlinessRating: String
+  effectivenessRating: String
+  reliabilityRating: String
+  bio: String
+  friends: [String]
+  friendRequests: [String]
+  challenges: [String]
+  completedChallenges: [String]
+  ownedChallenges: [String]
+  invitedChallenges: [String]
+  challengesWon: [String]
+  scheduledEvents: [String]
+  completedEvents: [String]
+  ownedEvents: [String]
+  invitedEvents: [String]
+  sentInvites: [String]
+  receivedInvites: [String]
+  posts: [String]
+  liked: [String]
+  comments: [String]
+  groups: [String]
+  invitedGroups: [String]
+  ownedGroups: [String]
+  messageBoards: [String]
+  streaks: [String]
+  # Client Attributes
+  trainersFollowing: [String]
+  subscriptions: [String]
+}
+
+type ClientBatch {
+  items: [Client]
+  unretrievedItems: [Client]
+}
+
+type ClientConnection {
+  items: [Client]
+  nextToken: String
+}
+
+type Comment {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Comment Attributes
+  by: String!
+  to: String!
+  comment: String
+  likes: [String]
+  comments: [String]
+}
+
+type CommentBatch {
+  items: [Comment]
+  unretrievedItems: [Comment]
+}
+
+type CommentConnection {
+  items: [Comment]
+  nextToken: String
+}
+
+type Event {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Event Attributes
+  title: String
+  description: String
+  owner: String!
+  time: String!
+  address: String!
+  members: [String]
+  invitedMembers: [String]
+  memberRequests: [String]
+  receivedInvites: [String]
+  capacity: String!
+  ifCompleted: String!
+  access: String!
+  restriction: String
+  challenge: String
+  group: String
+  tags: [String]
+}
+
+type EventBatch {
+  items: [Event]
+  unretrievedItems: [Event]
+}
+
+type EventConnection {
+  items: [Event]
+  nextToken: String
+}
+
+type Group {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Group Attributes
+  title: String
+  description: String
+  motto: String
+  groupImagePath: String
+  owners: [String]
+  members: [String]
+  invitedMembers: [String]
+  memberRequests: [String]
+  receivedInvites: [String]
+  access: String!
+  restriction: String
+  events: [String]
+  completedEvents: [String]
+  challenges: [String]
+  completedChallenges: [String]
+  posts: [String]
+  tags: [String]
+  streaks: [String]
+}
+
+type GroupBatch {
+  items: [Group]
+  unretrievedItems: [Group]
+}
+
+type GroupConnection {
+  items: [Group]
+  nextToken: String
+}
+
+type Gym {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # User Attributes
+  name: String!
+  birthday: String
+  email: String!
+  location: String
+  username: String!
+  stripeID: String
+  federatedID: String
+  profileImagePath: String
+  profileImagePaths: [String]
+  scheduledWorkouts: [String]
+  completedWorkouts: [String]
+  scheduledTimes: [String]
+  reviewsBy: [String]
+  reviewsAbout: [String]
+  friendlinessRating: String
+  effectivenessRating: String
+  reliabilityRating: String
+  bio: String
+  friends: [String]
+  friendRequests: [String]
+  challenges: [String]
+  completedChallenges: [String]
+  ownedChallenges: [String]
+  invitedChallenges: [String]
+  challengesWon: [String]
+  scheduledEvents: [String]
+  completedEvents: [String]
+  ownedEvents: [String]
+  invitedEvents: [String]
+  sentInvites: [String]
+  receivedInvites: [String]
+  posts: [String]
+  liked: [String]
+  comments: [String]
+  groups: [String]
+  invitedGroups: [String]
+  ownedGroups: [String]
+  messageBoards: [String]
+  streaks: [String]
+  # Gym Attributes
+  address: String!
+  trainers: [String]
+  weeklyHours: [String]
+  vacationTimes: [String]
+  sessionCapacity: String
+  gymType: String
+  paymentSplit: String
+}
+
+type GymBatch {
+  items: [Gym]
+  unretrievedItems: [Gym]
+}
+
+type GymConnection {
+  items: [Gym]
+  nextToken: String
+}
+
+type Invite {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Invite Attributes
+  from: String!
+  to: String!
+  inviteType: String!
+  about: String!
+  description: String
+}
+
+type InviteBatch {
+  items: [Invite]
+  unretrievedItems: [Invite]
+}
+
+type InviteConnection {
+  items: [Invite]
+  nextToken: String
+}
+
+type Message {
+  # Message Attributes
+  id: String!
+  board: String!
+  time_created: String!
+  type: String
+  from: String!
+  name: String!
+  profileImagePath: String
+  message: String!
+  lastSeenFor: [String]
+}
+
+type MessageBatch {
+  items: [Message]
+  unretrievedItems: [Message]
+}
+
+type MessageConnection {
+  items: [Message]
+  nextToken: String
+}
+
+input ModelChallengeFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Challenge Attributes
+  title: ModelStringFilterInput
+  description: ModelStringFilterInput
+  owner: ModelStringFilterInput
+  endTime: ModelStringFilterInput
+  members: ModelStringFilterInput
+  invitedMembers: ModelStringFilterInput
+  memberRequests: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  capacity: ModelStringFilterInput
+  ifCompleted: ModelStringFilterInput
+  access: ModelStringFilterInput
+  restriction: ModelStringFilterInput
+  events: ModelStringFilterInput
+  group: ModelStringFilterInput
+  goal: ModelStringFilterInput
+  challengeType: ModelStringFilterInput
+  difficulty: ModelStringFilterInput
+  winner: ModelStringFilterInput
+  prize: ModelStringFilterInput
+  tags: ModelStringFilterInput
+  submissions: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  streakUpdateSpanType: ModelStringFilterInput
+  streakUpdateInterval: ModelStringFilterInput
+  streakN: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelChallengeFilterInput]
+  or: [ModelChallengeFilterInput]
+  not: ModelChallengeFilterInput
+}
+
+input ModelClientFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # User Attributes
+  name: ModelStringFilterInput
+  gender: ModelStringFilterInput
+  birthday: ModelStringFilterInput
+  email: ModelStringFilterInput
+  location: ModelStringFilterInput
+  username: ModelStringFilterInput
+  stripeID: ModelStringFilterInput
+  federatedID: ModelStringFilterInput
+  profileImagePath: ModelStringFilterInput
+  profileImagePaths: ModelStringFilterInput
+  scheduledWorkouts: ModelStringFilterInput
+  completedWorkouts: ModelStringFilterInput
+  scheduledTimes: ModelStringFilterInput
+  reviewsBy: ModelStringFilterInput
+  reviewsAbout: ModelStringFilterInput
+  friendlinessRating: ModelStringFilterInput
+  effectivenessRating: ModelStringFilterInput
+  reliabilityRating: ModelStringFilterInput
+  bio: ModelStringFilterInput
+  friends: ModelStringFilterInput
+  friendRequests: ModelStringFilterInput
+  challenges: ModelStringFilterInput
+  completedChallenges: ModelStringFilterInput
+  ownedChallenges: ModelStringFilterInput
+  invitedChallenges: ModelStringFilterInput
+  challengesWon: ModelStringFilterInput
+  scheduledEvents: ModelStringFilterInput
+  completedEvents: ModelStringFilterInput
+  ownedEvents: ModelStringFilterInput
+  invitedEvents: ModelStringFilterInput
+  sentInvites: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  posts: ModelStringFilterInput
+  liked: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  groups: ModelStringFilterInput
+  invitedGroups: ModelStringFilterInput
+  ownedGroups: ModelStringFilterInput
+  messageBoards: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  # Client Attributes
+  trainersFollowing: ModelStringFilterInput
+  subscriptions: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelClientFilterInput]
+  or: [ModelClientFilterInput]
+  not: ModelClientFilterInput
+}
+
+input ModelCommentFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Comment Attributes
+  by: ModelStringFilterInput
+  to: ModelStringFilterInput
+  comment: ModelStringFilterInput
+  likes: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelCommentFilterInput]
+  or: [ModelCommentFilterInput]
+  not: ModelCommentFilterInput
+}
+
+input ModelEventFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Event Attributes
+  title: ModelStringFilterInput
+  description: ModelStringFilterInput
+  owner: ModelStringFilterInput
+  time: ModelStringFilterInput
+  address: ModelStringFilterInput
+  members: ModelStringFilterInput
+  invitedMembers: ModelStringFilterInput
+  memberRequests: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  capacity: ModelStringFilterInput
+  ifCompleted: ModelStringFilterInput
+  access: ModelStringFilterInput
+  restriction: ModelStringFilterInput
+  challenge: ModelStringFilterInput
+  group: ModelStringFilterInput
+  tags: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelEventFilterInput]
+  or: [ModelEventFilterInput]
+  not: ModelEventFilterInput
+}
+
+input ModelGroupFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Group Attributes
+  title: ModelStringFilterInput
+  description: ModelStringFilterInput
+  motto: ModelStringFilterInput
+  groupImagePath: ModelStringFilterInput
+  owners: ModelStringFilterInput
+  members: ModelStringFilterInput
+  invitedMembers: ModelStringFilterInput
+  memberRequests: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  access: ModelStringFilterInput
+  restriction: ModelStringFilterInput
+  events: ModelStringFilterInput
+  completedEvents: ModelStringFilterInput
+  challenges: ModelStringFilterInput
+  completedChallenges: ModelStringFilterInput
+  posts: ModelStringFilterInput
+  tags: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelGroupFilterInput]
+  or: [ModelGroupFilterInput]
+  not: ModelGroupFilterInput
+}
+
+input ModelGymFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # User Attributes
+  name: ModelStringFilterInput
+  birthday: ModelStringFilterInput
+  email: ModelStringFilterInput
+  location: ModelStringFilterInput
+  username: ModelStringFilterInput
+  stripeID: ModelStringFilterInput
+  federatedID: ModelStringFilterInput
+  profileImagePath: ModelStringFilterInput
+  profileImagePaths: ModelStringFilterInput
+  scheduledWorkouts: ModelStringFilterInput
+  completedWorkouts: ModelStringFilterInput
+  scheduledTimes: ModelStringFilterInput
+  reviewsBy: ModelStringFilterInput
+  reviewsAbout: ModelStringFilterInput
+  friendlinessRating: ModelStringFilterInput
+  effectivenessRating: ModelStringFilterInput
+  reliabilityRating: ModelStringFilterInput
+  bio: ModelStringFilterInput
+  friends: ModelStringFilterInput
+  friendRequests: ModelStringFilterInput
+  challenges: ModelStringFilterInput
+  completedChallenges: ModelStringFilterInput
+  ownedChallenges: ModelStringFilterInput
+  invitedChallenges: ModelStringFilterInput
+  challengesWon: ModelStringFilterInput
+  scheduledEvents: ModelStringFilterInput
+  completedEvents: ModelStringFilterInput
+  ownedEvents: ModelStringFilterInput
+  invitedEvents: ModelStringFilterInput
+  sentInvites: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  posts: ModelStringFilterInput
+  liked: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  groups: ModelStringFilterInput
+  invitedGroups: ModelStringFilterInput
+  ownedGroups: ModelStringFilterInput
+  messageBoards: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  # Gym Attributes
+  address: ModelStringFilterInput
+  trainers: ModelStringFilterInput
+  weeklyHours: ModelStringFilterInput
+  vacationTimes: ModelStringFilterInput
+  sessionCapacity: ModelStringFilterInput
+  gymType: ModelStringFilterInput
+  paymentSplit: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelGymFilterInput]
+  or: [ModelGymFilterInput]
+  not: ModelGymFilterInput
+}
+
+input ModelInviteFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Invite Attributes
+  from: ModelStringFilterInput
+  to: ModelStringFilterInput
+  inviteType: ModelStringFilterInput
+  about: ModelStringFilterInput
+  description: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelInviteFilterInput]
+  or: [ModelInviteFilterInput]
+  not: ModelInviteFilterInput
+}
+
+input ModelMessageFilterInput {
+  # Message Attributes
+  id: ModelStringFilterInput
+  board: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  type: ModelStringFilterInput
+  from: ModelStringFilterInput
+  name: ModelStringFilterInput
+  profileImagePath: ModelStringFilterInput
+  message: ModelStringFilterInput
+  lastSeenFor: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelMessageFilterInput]
+  or: [ModelMessageFilterInput]
+  not: ModelMessageFilterInput
+}
+
+input ModelPostFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Post Attributes
+  by: ModelStringFilterInput
+  description: ModelStringFilterInput
+  access: ModelStringFilterInput
+  postType: ModelStringFilterInput
+  about: ModelStringFilterInput
+  picturePaths: ModelStringFilterInput
+  videoPaths: ModelStringFilterInput
+  likes: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  group: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelPostFilterInput]
+  or: [ModelPostFilterInput]
+  not: ModelPostFilterInput
+}
+
+input ModelReviewFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Review Attributes
+  by: ModelStringFilterInput
+  about: ModelStringFilterInput
+  friendlinessRating: ModelStringFilterInput
+  effectivenessRating: ModelStringFilterInput
+  reliabilityRating: ModelStringFilterInput
+  description: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelReviewFilterInput]
+  or: [ModelReviewFilterInput]
+  not: ModelReviewFilterInput
+}
+
+input ModelSponsorFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # User Attributes
+  name: ModelStringFilterInput
+  gender: ModelStringFilterInput
+  birthday: ModelStringFilterInput
+  email: ModelStringFilterInput
+  location: ModelStringFilterInput
+  username: ModelStringFilterInput
+  stripeID: ModelStringFilterInput
+  federatedID: ModelStringFilterInput
+  profileImagePath: ModelStringFilterInput
+  profileImagePaths: ModelStringFilterInput
+  scheduledWorkouts: ModelStringFilterInput
+  completedWorkouts: ModelStringFilterInput
+  scheduledTimes: ModelStringFilterInput
+  reviewsBy: ModelStringFilterInput
+  reviewsAbout: ModelStringFilterInput
+  friendlinessRating: ModelStringFilterInput
+  effectivenessRating: ModelStringFilterInput
+  reliabilityRating: ModelStringFilterInput
+  bio: ModelStringFilterInput
+  friends: ModelStringFilterInput
+  friendRequests: ModelStringFilterInput
+  challenges: ModelStringFilterInput
+  completedChallenges: ModelStringFilterInput
+  ownedChallenges: ModelStringFilterInput
+  invitedChallenges: ModelStringFilterInput
+  challengesWon: ModelStringFilterInput
+  scheduledEvents: ModelStringFilterInput
+  completedEvents: ModelStringFilterInput
+  ownedEvents: ModelStringFilterInput
+  invitedEvents: ModelStringFilterInput
+  sentInvites: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  posts: ModelStringFilterInput
+  liked: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  groups: ModelStringFilterInput
+  invitedGroups: ModelStringFilterInput
+  ownedGroups: ModelStringFilterInput
+  messageBoards: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  # Sponsor Attributes
+  ########## Filter Attributes
+  and: [ModelSponsorFilterInput]
+  or: [ModelSponsorFilterInput]
+  not: ModelSponsorFilterInput
+}
+
+input ModelStreakFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Streak Attributes
+  owner: ModelStringFilterInput
+  about: ModelStringFilterInput
+  N: ModelStringFilterInput
+  bestN: ModelStringFilterInput
+  currentN: ModelStringFilterInput
+  lastUpdated: ModelStringFilterInput
+  lastAttemptStarted: ModelStringFilterInput
+  streakType: ModelStringFilterInput
+  updateSpanType: ModelStringFilterInput
+  updateInterval: ModelStringFilterInput
+  streakN: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelStreakFilterInput]
+  or: [ModelStreakFilterInput]
+  not: ModelStreakFilterInput
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  in: [String]
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelSubmissionFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Post Attributes
+  by: ModelStringFilterInput
+  description: ModelStringFilterInput
+  about: ModelStringFilterInput
+  picturePaths: ModelStringFilterInput
+  videoPaths: ModelStringFilterInput
+  likes: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelSubmissionFilterInput]
+  or: [ModelSubmissionFilterInput]
+  not: ModelSubmissionFilterInput
+}
+
+input ModelTrainerFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # User Attributes
+  name: ModelStringFilterInput
+  gender: ModelStringFilterInput
+  birthday: ModelStringFilterInput
+  email: ModelStringFilterInput
+  location: ModelStringFilterInput
+  username: ModelStringFilterInput
+  stripeID: ModelStringFilterInput
+  federatedID: ModelStringFilterInput
+  profileImagePath: ModelStringFilterInput
+  profileImagePaths: ModelStringFilterInput
+  scheduledWorkouts: ModelStringFilterInput
+  completedWorkouts: ModelStringFilterInput
+  scheduledTimes: ModelStringFilterInput
+  reviewsBy: ModelStringFilterInput
+  reviewsAbout: ModelStringFilterInput
+  friendlinessRating: ModelStringFilterInput
+  effectivenessRating: ModelStringFilterInput
+  reliabilityRating: ModelStringFilterInput
+  bio: ModelStringFilterInput
+  friends: ModelStringFilterInput
+  friendRequests: ModelStringFilterInput
+  challenges: ModelStringFilterInput
+  completedChallenges: ModelStringFilterInput
+  ownedChallenges: ModelStringFilterInput
+  invitedChallenges: ModelStringFilterInput
+  challengesWon: ModelStringFilterInput
+  scheduledEvents: ModelStringFilterInput
+  completedEvents: ModelStringFilterInput
+  ownedEvents: ModelStringFilterInput
+  invitedEvents: ModelStringFilterInput
+  sentInvites: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  posts: ModelStringFilterInput
+  liked: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  groups: ModelStringFilterInput
+  invitedGroups: ModelStringFilterInput
+  ownedGroups: ModelStringFilterInput
+  messageBoards: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  # Trainer Attributes
+  gym: ModelStringFilterInput
+  availableTimes: ModelStringFilterInput
+  workoutSticker: ModelStringFilterInput
+  preferredIntensity: ModelStringFilterInput
+  workoutCapacity: ModelStringFilterInput
+  workoutPrice: ModelStringFilterInput
+  followers: ModelStringFilterInput
+  subscribers: ModelStringFilterInput
+  subscriptionPrice: ModelStringFilterInput
+  certifications: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelTrainerFilterInput]
+  or: [ModelTrainerFilterInput]
+  not: ModelTrainerFilterInput
+}
+
+input ModelWorkoutFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Workout Attributes
+  time: ModelStringFilterInput
+  ifCompleted: ModelStringFilterInput
+  trainer: ModelStringFilterInput
+  clients: ModelStringFilterInput
+  capacity: ModelStringFilterInput
+  gym: ModelStringFilterInput
+  sticker: ModelStringFilterInput
+  intensity: ModelStringFilterInput
+  missingReviews: ModelStringFilterInput
+  price: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelWorkoutFilterInput]
+  or: [ModelWorkoutFilterInput]
+  not: ModelWorkoutFilterInput
+}
+
+type Post {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Post Attributes
+  by: String!
+  description: String
+  access: String!
+  postType: String
+  about: String
+  picturePaths: [String]
+  videoPaths: [String]
+  likes: Int!
+  comments: [String]
+  group: String
+}
+
+type PostBatch {
+  items: [Post]
+  unretrievedItems: [Post]
+}
+
+type PostConnection {
+  items: [Post]
+  nextToken: String
+}
+
+type Query {
+  # Getting by ID
+  getClient(id: String!): Client
+  getTrainer(id: String!): Trainer
+  getGym(id: String!): Gym
+  getWorkout(id: String!): Workout
+  getReview(id: String!): Review
+  getEvent(id: String!): Event
+  getChallenge(id: String!): Challenge
+  getInvite(id: String!): Invite
+  getPost(id: String!): Post
+  getSubmission(id: String!): Submission
+  getGroup(id: String!): Group
+  getComment(id: String!): Comment
+  getSponsor(id: String!): Sponsor
+  getMessage(id: String!, board: String!): Message
+  getStreak(id: String!): Streak
+  # Getting multiple by ID
+  getClients(ids: [String]!): ClientBatch
+  getTrainers(ids: [String]!): TrainerBatch
+  getGyms(ids: [String]!): GymBatch
+  getWorkouts(ids: [String]!): WorkoutBatch
+  getReviews(ids: [String]!): ReviewBatch
+  getEvents(ids: [String]!): EventBatch
+  getChallenges(ids: [String]!): ChallengeBatch
+  getInvites(ids: [String]!): InviteBatch
+  getPosts(ids: [String]!): PostBatch
+  getSubmissions(id: [String]!): SubmissionBatch
+  getGroups(ids: [String]!): GroupBatch
+  getComments(ids: [String]!): CommentBatch
+  getSponsors(ids: [String]!): SponsorBatch
+  getMessages(ids: [String]!, board: String!): MessageBatch
+  getStreaks(ids: [String]!): StreakBatch
+  # Getting by Username
+  getClientByUsername(username: String!): Client
+  getTrainerByUsername(username: String!): Trainer
+  getGymByUsername(username: String!): Gym
+  getSponsorByUsername(username: String!): Sponsor
+  # Getting by Federated ID
+  getClientByFederatedID(federatedID: String!): Client
+  getTrainerByFederatedID(federatedID: String!): Trainer
+  getGymByFederatedID(federatedID: String!): Gym
+  getSponsorByFederatedID(federatedID: String!): Sponsor
+  # Queries
+  queryClients(filter: ModelClientFilterInput, limit: Int, nextToken: String): ClientConnection
+  queryTrainers(filter: ModelTrainerFilterInput, limit: Int, nextToken: String): TrainerConnection
+  queryGyms(filter: ModelGymFilterInput, limit: Int, nextToken: String): GymConnection
+  queryWorkouts(filter: ModelWorkoutFilterInput, limit: Int, nextToken: String): WorkoutConnection
+  queryReviews(filter: ModelReviewFilterInput, limit: Int, nextToken: String): ReviewConnection
+  queryEvents(filter: ModelEventFilterInput, limit: Int, nextToken: String): EventConnection
+  queryChallenges(filter: ModelChallengeFilterInput, limit: Int, nextToken: String): ChallengeConnection
+  queryInvites(filter: ModelInviteFilterInput, limit: Int, nextToken: String): InviteConnection
+  queryPosts(filter: ModelPostFilterInput, limit: Int, nextToken: String): PostConnection
+  querySubmissions(filter: ModelSubmissionFilterInput, limit: Int, nextToken: String): SubmissionConnection
+  queryGroups(filter: ModelGroupFilterInput, limit: Int, nextToken: String): GroupConnection
+  queryComments(filter: ModelCommentFilterInput, limit: Int, nextToken: String): CommentConnection
+  querySponsors(filter: ModelSponsorFilterInput, limit: Int, nextToken: String): SponsorConnection
+  queryMessages(
+    board: String!,
+    filter: ModelMessageFilterInput,
+    limit: Int,
+    nextToken: String
+  ): MessageConnection
+  queryStreaks(filter: ModelStreakFilterInput, limit: Int, nextToken: String): StreakConnection
+}
+
+type Review {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: String!
+  # Review Attributes
+  by: String!
+  about: String!
+  friendlinessRating: String!
+  effectivenessRating: String!
+  reliabilityRating: String!
+  description: String
+}
+
+type ReviewBatch {
+  items: [Review]
+  unretrievedItems: [Review]
+}
+
+type ReviewConnection {
+  items: [Review]
+  nextToken: String
+}
+
+type Sponsor {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: String!
+  # User Attributes
+  name: String!
+  gender: String
+  birthday: String
+  email: String!
+  location: String
+  username: String!
+  stripeID: String
+  federatedID: String
+  profileImagePath: String
+  profileImagePaths: [String]
+  scheduledWorkouts: [String]
+  completedWorkouts: [String]
+  scheduledTimes: [String]
+  reviewsBy: [String]
+  reviewsAbout: [String]
+  friendlinessRating: String
+  effectivenessRating: String
+  reliabilityRating: String
+  bio: String
+  friends: [String]
+  friendRequests: [String]
+  challenges: [String]
+  completedChallenges: [String]
+  ownedChallenges: [String]
+  invitedChallenges: [String]
+  challengesWon: [String]
+  scheduledEvents: [String]
+  completedEvents: [String]
+  ownedEvents: [String]
+  invitedEvents: [String]
+  sentInvites: [String]
+  receivedInvites: [String]
+  posts: [String]
+  liked: [String]
+  comments: [String]
+  groups: [String]
+  invitedGroups: [String]
+  ownedGroups: [String]
+  messageBoards: [String]
+  streaks: [String]
+}
+
+type SponsorBatch {
+  items: [Sponsor]
+  unretrievedItems: [Sponsor]
+}
+
+type SponsorConnection {
+  items: [Sponsor]
+  nextToken: String
+}
+
+type Streak {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Streak Attributes
+  owner: String!
+  about: String!
+  N: Int!
+  bestN: Int!
+  currentN: Int!
+  lastUpdated: String!
+  lastAttemptStarted: String!
+  streakType: String!
+  updateSpanType: String!
+  updateInterval: String!
+  streakN: String!
+}
+
+type StreakBatch {
+  items: [Streak]
+  unretrievedItems: [Streak]
+}
+
+type StreakConnection {
+  items: [Streak]
+  nextToken: String
+}
+
+type Submission {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: String!
+  # Submission Attributes
+  by: String!
+  description: String
+  about: String
+  picturePaths: [String]
+  videoPaths: [String]
+  likes: Int!
+  comments: [String]
+}
+
+type SubmissionBatch {
+  items: [Submission]
+  unretrievedItems: [Submission]
+}
+
+type SubmissionConnection {
+  items: [Submission]
+  nextToken: String
+}
+
+type Trainer {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: String!
+  # User Attributes
+  name: String!
+  gender: String
+  birthday: String
+  email: String!
+  location: String
+  username: String!
+  stripeID: String
+  federatedID: String
+  profileImagePath: String
+  profileImagePaths: [String]
+  scheduledWorkouts: [String]
+  completedWorkouts: [String]
+  scheduledTimes: [String]
+  reviewsBy: [String]
+  reviewsAbout: [String]
+  friendlinessRating: String
+  effectivenessRating: String
+  reliabilityRating: String
+  bio: String
+  friends: [String]
+  friendRequests: [String]
+  challenges: [String]
+  completedChallenges: [String]
+  ownedChallenges: [String]
+  invitedChallenges: [String]
+  challengesWon: [String]
+  scheduledEvents: [String]
+  completedEvents: [String]
+  ownedEvents: [String]
+  invitedEvents: [String]
+  sentInvites: [String]
+  receivedInvites: [String]
+  posts: [String]
+  liked: [String]
+  comments: [String]
+  groups: [String]
+  invitedGroups: [String]
+  ownedGroups: [String]
+  messageBoards: [String]
+  streaks: [String]
+  # Trainer Attributes
+  gym: String!
+  availableTimes: [String]
+  workoutSticker: String
+  preferredIntensity: String
+  workoutCapacity: String
+  workoutPrice: String
+  followers: [String]
+  subscribers: [String]
+  subscriptionPrice: String
+  certifications: [String]
+}
+
+type TrainerBatch {
+  items: [Trainer]
+  unretrievedItems: [Trainer]
+}
+
+type TrainerConnection {
+  items: [Trainer]
+  nextToken: String
+}
+
+type Workout {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: String!
+  # Workout Attributes
+  time: String!
+  ifCompleted: String!
+  trainer: String!
+  clients: [String]
+  capacity: String!
+  gym: String!
+  sticker: String!
+  intensity: String!
+  missingReviews: [String]
+  price: String!
+}
+
+type WorkoutBatch {
+  items: [Workout]
+  unretrievedItems: [Workout]
+}
+
+type WorkoutConnection {
+  items: [Workout]
+  nextToken: String
+}
