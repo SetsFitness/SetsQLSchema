@@ -1,9 +1,4 @@
-﻿schema {
-  query: Query
-}
-
-#
-type Challenge {
+﻿type Challenge {
   # Object Attributes
   id: String!
   item_type: String!
