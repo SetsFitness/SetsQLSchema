@@ -24,6 +24,7 @@
   difficulty: String
   winner: String
   prize: String
+  prizeImagePath: String
   tags: [String]
   submissions: [String]
   streaks: [String]
@@ -89,6 +90,7 @@ type Client {
   ownedGroups: [String]
   messageBoards: [String]
   streaks: [String]
+  credit: Int!
   # Client Attributes
   trainersFollowing: [String]
   subscriptions: [String]
@@ -125,6 +127,33 @@ type CommentBatch {
 
 type CommentConnection {
   items: [Comment]
+  nextToken: String
+}
+
+type Deal {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: Int!
+  # Deal Attributes
+  sponsor: String!
+  productName: String!
+  productImagePath: String
+  productImagePaths: [String]
+  productCreditPrice: String
+  validTime: String
+  productStoreLink: String
+  quantity: Int!
+}
+
+type DealBatch {
+  items: [Deal]
+  unretrievedItems: [Deal]
+}
+
+type DealConnection {
+  items: [Deal]
   nextToken: String
 }
 
@@ -246,6 +275,7 @@ type Gym {
   ownedGroups: [String]
   messageBoards: [String]
   streaks: [String]
+  credit: Int!
   # Gym Attributes
   address: String!
   trainers: [String]
@@ -339,6 +369,7 @@ input ModelChallengeFilterInput {
   difficulty: ModelStringFilterInput
   winner: ModelStringFilterInput
   prize: ModelStringFilterInput
+  prizeImagePath: ModelStringFilterInput
   tags: ModelStringFilterInput
   submissions: ModelStringFilterInput
   streaks: ModelStringFilterInput
@@ -398,6 +429,7 @@ input ModelClientFilterInput {
   ownedGroups: ModelStringFilterInput
   messageBoards: ModelStringFilterInput
   streaks: ModelStringFilterInput
+  credit: ModelStringFilterInput
   # Client Attributes
   trainersFollowing: ModelStringFilterInput
   subscriptions: ModelStringFilterInput
@@ -423,6 +455,27 @@ input ModelCommentFilterInput {
   and: [ModelCommentFilterInput]
   or: [ModelCommentFilterInput]
   not: ModelCommentFilterInput
+}
+
+input ModelDealFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # Deal Attributes
+  sponsor: ModelStringFilterInput
+  productName: ModelStringFilterInput
+  productImagePath: ModelStringFilterInput
+  productImagePaths: ModelStringFilterInput
+  productCreditPrice: ModelStringFilterInput
+  validTime: ModelStringFilterInput
+  productStoreLink: ModelStringFilterInput
+  quantity: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelDealFilterInput]
+  or: [ModelDealFilterInput]
+  not: ModelDealFilterInput
 }
 
 input ModelEventFilterInput {
@@ -531,6 +584,7 @@ input ModelGymFilterInput {
   ownedGroups: ModelStringFilterInput
   messageBoards: ModelStringFilterInput
   streaks: ModelStringFilterInput
+  credit: ModelStringFilterInput
   # Gym Attributes
   address: ModelStringFilterInput
   trainers: ModelStringFilterInput
@@ -669,8 +723,10 @@ input ModelSponsorFilterInput {
   ownedGroups: ModelStringFilterInput
   messageBoards: ModelStringFilterInput
   streaks: ModelStringFilterInput
+  credit: ModelStringFilterInput
   # Sponsor Attributes
-  ########## Filter Attributes
+  deals: ModelStringFilterInput
+  # Filter Attributes
   and: [ModelSponsorFilterInput]
   or: [ModelSponsorFilterInput]
   not: ModelSponsorFilterInput
@@ -781,6 +837,7 @@ input ModelTrainerFilterInput {
   ownedGroups: ModelStringFilterInput
   messageBoards: ModelStringFilterInput
   streaks: ModelStringFilterInput
+  credit: ModelStringFilterInput
   # Trainer Attributes
   gym: ModelStringFilterInput
   availableTimes: ModelStringFilterInput
@@ -867,6 +924,7 @@ type Query {
   getSponsor(id: String!): Sponsor
   getMessage(id: String!, board: String!): Message
   getStreak(id: String!): Streak
+  getDeal(id: String!): Deal
   # Getting multiple by ID
   getClients(ids: [String]!): ClientBatch
   getTrainers(ids: [String]!): TrainerBatch
@@ -883,6 +941,7 @@ type Query {
   getSponsors(ids: [String]!): SponsorBatch
   getMessages(ids: [String]!, board: String!): MessageBatch
   getStreaks(ids: [String]!): StreakBatch
+  getDeals(ids: [String]!): DealBatch
   # Getting by Username
   getClientByUsername(username: String!): Client
   getTrainerByUsername(username: String!): Trainer
@@ -914,6 +973,7 @@ type Query {
     nextToken: String
   ): MessageConnection
   queryStreaks(filter: ModelStreakFilterInput, limit: Int, nextToken: String): StreakConnection
+  queryDeals(filter: ModelDealFilterInput, limit: Int, nextToken: String): DealConnection
 }
 
 type Review {
@@ -988,6 +1048,9 @@ type Sponsor {
   ownedGroups: [String]
   messageBoards: [String]
   streaks: [String]
+  credit: Int!
+  # Sponsor Attributes
+  deals: [String]
 }
 
 type SponsorBatch {
@@ -1103,6 +1166,7 @@ type Trainer {
   ownedGroups: [String]
   messageBoards: [String]
   streaks: [String]
+  credit: Int!
   # Trainer Attributes
   gym: String!
   availableTimes: [String]
