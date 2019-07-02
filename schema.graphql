@@ -144,10 +144,11 @@ type Deal {
   productImagePaths: [String]
   productCreditPrice: String
   productType: String
-  validTime: String
+  validUntil: String
   productStoreLink: String
   quantity: Int!
   productsSold: [String]
+  score: Int
 }
 
 type DealBatch {
@@ -475,10 +476,11 @@ input ModelDealFilterInput {
   productImagePaths: ModelStringFilterInput
   productCreditPrice: ModelStringFilterInput
   productType: ModelStringFilterInput
-  validTime: ModelStringFilterInput
+  validUntil: ModelStringFilterInput
   productStoreLink: ModelStringFilterInput
   quantity: ModelStringFilterInput
   productsSold: ModelStringFilterInput
+  score: ModelStringFilterInput
   # Filter Attributes
   and: [ModelDealFilterInput]
   or: [ModelDealFilterInput]
@@ -811,6 +813,7 @@ input ModelSubmissionFilterInput {
   videoPaths: ModelStringFilterInput
   likes: ModelStringFilterInput
   comments: ModelStringFilterInput
+  approved: ModelStringFilterInput
   # Filter Attributes
   and: [ModelSubmissionFilterInput]
   or: [ModelSubmissionFilterInput]
@@ -1163,6 +1166,7 @@ type Submission {
   videoPaths: [String]
   likes: Int!
   comments: [String]
+  approved: String
 }
 
 type SubmissionBatch {
