@@ -143,6 +143,7 @@ type Deal {
   productImagePath: String
   productImagePaths: [String]
   productCreditPrice: String
+  description: String
   productType: String
   validUntil: String
   productStoreLink: String
@@ -475,6 +476,7 @@ input ModelDealFilterInput {
   productImagePath: ModelStringFilterInput
   productImagePaths: ModelStringFilterInput
   productCreditPrice: ModelStringFilterInput
+  description: ModelStringFilterInput
   productType: ModelStringFilterInput
   validUntil: ModelStringFilterInput
   productStoreLink: ModelStringFilterInput
