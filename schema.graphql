@@ -1,4 +1,65 @@
-﻿type Challenge {
+﻿type Admin {
+  # Object Attributes
+  id: String!
+  item_type: String!
+  time_created: String!
+  marker: String!
+  # User Attributes
+  name: String!
+  gender: String
+  birthday: String
+  email: String!
+  location: String
+  username: String!
+  stripeID: String
+  federatedID: String
+  profileImagePath: String
+  profileImagePaths: [String]
+  scheduledWorkouts: [String]
+  completedWorkouts: [String]
+  scheduledTimes: [String]
+  reviewsBy: [String]
+  reviewsAbout: [String]
+  friendlinessRating: String
+  effectivenessRating: String
+  reliabilityRating: String
+  bio: String
+  friends: [String]
+  friendRequests: [String]
+  challenges: [String]
+  completedChallenges: [String]
+  ownedChallenges: [String]
+  invitedChallenges: [String]
+  challengesWon: [String]
+  scheduledEvents: [String]
+  completedEvents: [String]
+  ownedEvents: [String]
+  invitedEvents: [String]
+  sentInvites: [String]
+  receivedInvites: [String]
+  posts: [String]
+  liked: [String]
+  comments: [String]
+  groups: [String]
+  invitedGroups: [String]
+  ownedGroups: [String]
+  messageBoards: [String]
+  streaks: [String]
+  credit: Int!
+  productsOwned: [String]
+}
+
+type AdminBatch {
+  items: [Admin]
+  unretrievedItems: [Admin]
+}
+
+type AdminConnection {
+  items: [Challenge]
+  nextToken: String
+}
+
+type Challenge {
   # Object Attributes
   id: String!
   item_type: String!
@@ -35,7 +96,7 @@
 
 type ChallengeBatch {
   items: [Challenge]
-  unretrievedItems: [Client]
+  unretrievedItems: [Challenge]
 }
 
 type ChallengeConnection {
@@ -147,7 +208,7 @@ type Deal {
   productType: String
   validUntil: String
   productStoreLink: String
-  quantity: Int!
+  products: [String]
   productsSold: [String]
   score: Int
 }
@@ -349,6 +410,61 @@ type MessageConnection {
   nextToken: String
 }
 
+input ModelAdminFilterInput {
+  # Object Attributes
+  id: ModelStringFilterInput
+  item_type: ModelStringFilterInput
+  time_created: ModelStringFilterInput
+  marker: ModelStringFilterInput
+  # User Attributes
+  name: ModelStringFilterInput
+  gender: ModelStringFilterInput
+  birthday: ModelStringFilterInput
+  email: ModelStringFilterInput
+  location: ModelStringFilterInput
+  username: ModelStringFilterInput
+  stripeID: ModelStringFilterInput
+  federatedID: ModelStringFilterInput
+  profileImagePath: ModelStringFilterInput
+  profileImagePaths: ModelStringFilterInput
+  scheduledWorkouts: ModelStringFilterInput
+  completedWorkouts: ModelStringFilterInput
+  scheduledTimes: ModelStringFilterInput
+  reviewsBy: ModelStringFilterInput
+  reviewsAbout: ModelStringFilterInput
+  friendlinessRating: ModelStringFilterInput
+  effectivenessRating: ModelStringFilterInput
+  reliabilityRating: ModelStringFilterInput
+  bio: ModelStringFilterInput
+  friends: ModelStringFilterInput
+  friendRequests: ModelStringFilterInput
+  challenges: ModelStringFilterInput
+  completedChallenges: ModelStringFilterInput
+  ownedChallenges: ModelStringFilterInput
+  invitedChallenges: ModelStringFilterInput
+  challengesWon: ModelStringFilterInput
+  scheduledEvents: ModelStringFilterInput
+  completedEvents: ModelStringFilterInput
+  ownedEvents: ModelStringFilterInput
+  invitedEvents: ModelStringFilterInput
+  sentInvites: ModelStringFilterInput
+  receivedInvites: ModelStringFilterInput
+  posts: ModelStringFilterInput
+  liked: ModelStringFilterInput
+  comments: ModelStringFilterInput
+  groups: ModelStringFilterInput
+  invitedGroups: ModelStringFilterInput
+  ownedGroups: ModelStringFilterInput
+  messageBoards: ModelStringFilterInput
+  streaks: ModelStringFilterInput
+  credit: ModelStringFilterInput
+  productsOwned: ModelStringFilterInput
+  # Filter Attributes
+  and: [ModelAdminFilterInput]
+  or: [ModelAdminFilterInput]
+  not: ModelAdminFilterInput
+}
+
 input ModelChallengeFilterInput {
   # Object Attributes
   id: ModelStringFilterInput
@@ -480,7 +596,7 @@ input ModelDealFilterInput {
   productType: ModelStringFilterInput
   validUntil: ModelStringFilterInput
   productStoreLink: ModelStringFilterInput
-  quantity: ModelStringFilterInput
+  products: ModelStringFilterInput
   productsSold: ModelStringFilterInput
   score: ModelStringFilterInput
   # Filter Attributes
@@ -947,7 +1063,7 @@ type Product {
   time_created: String!
   marker: Int!
   # Product Attributes
-  owner: String!
+  owner: String
   deal: String!
   expirationDate: String
   codes: [String]
@@ -1001,16 +1117,19 @@ type Query {
   getStreaks(ids: [String]!): StreakBatch
   getDeals(ids: [String]!): DealBatch
   getProducts(ids: [String]!): ProductBatch
+  getAdmins(ids: [String]!): AdminBatch
   # Getting by Username
   getClientByUsername(username: String!): Client
   getTrainerByUsername(username: String!): Trainer
   getGymByUsername(username: String!): Gym
   getSponsorByUsername(username: String!): Sponsor
+  getAdminByUsername(username: String!): Admin
   # Getting by Federated ID
   getClientByFederatedID(federatedID: String!): Client
   getTrainerByFederatedID(federatedID: String!): Trainer
   getGymByFederatedID(federatedID: String!): Gym
   getSponsorByFederatedID(federatedID: String!): Sponsor
+  getAdminByFederatedID(federatedID: String!): Admin
   # Queries
   queryClients(filter: ModelClientFilterInput, limit: Int, nextToken: String): ClientConnection
   queryTrainers(filter: ModelTrainerFilterInput, limit: Int, nextToken: String): TrainerConnection
@@ -1034,6 +1153,7 @@ type Query {
   queryStreaks(filter: ModelStreakFilterInput, limit: Int, nextToken: String): StreakConnection
   queryDeals(filter: ModelDealFilterInput, limit: Int, nextToken: String): DealConnection
   queryProducts(filter: ModelProductFilterInput, limit: Int, nextToken: String): ProductConnection
+  queryAdmins(filter: ModelAdminFilterInput, limit: Int, nextToken: String): AdminConnection
 }
 
 type Review {
