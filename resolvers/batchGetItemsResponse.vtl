@@ -1,0 +1,4 @@
+## Pass back the result from DynamoDB. **
+#set($items = $ctx.result.data.VastusMainDatabaseTable)
+#set($unretrieved_items =  $ctx.result.unprocessedKeys.VastusMainDatabaseTable)
+$util.toJson({"items": $items, "unretrievedItems": $unretrieved_items})

@@ -1,0 +1,23 @@
+## Example below shows single-table batch read where the table name is "Posts" and the items in
+##   DynamoDB have a primary key of "id". You can read from multiple tables at once by
+##   specifying each table name under "tables" - e.g. "tables": {"Table1": "...", "Table2": "..."}
+## Read more: https://docs.aws.amazon.com/appsync/latest/devguide/tutorial-dynamodb-batch.html
+
+#set($ids = [])
+#foreach($id in ${ctx.args.ids})
+    #set($map = {})
+    $util.qr($map.put("id", $util.dynamodb.toString($id)))
+    $util.qr($map.put("item_type", $util.dynamodb.toString("ITEMTYPE")))
+    $util.qr($ids.add($map))
+#end
+
+{
+    "version" : "2018-05-29",
+    "operation" : "BatchGetItem",
+    "tables" : {
+        "VastusMainDatabaseTable": {
+            "keys": $util.toJson($ids),
+            "consistentRead": true,
+        }
+    }
+}
